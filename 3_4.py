@@ -2,7 +2,7 @@
 
 num1, num2, num3 = input(), input(), input()
 
-txt = str(num1) + str(num2) + str(num3)
+txt = num1 + num2 + num3
 count = txt.count('-')
 
 print('Количество отрицательных чисел = ', count)
