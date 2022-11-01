@@ -2,5 +2,5 @@
 
 num1, num2, num3 = int(input()), int(input()), int(input())
 
-print('Количество отрицательных чисел = ', int(num1<0) + int(num2<0) + int(num3<0))
-print('Количество положительных чисел = ', int(num1>0) + int(num2>0) + int(num3>0))
+print('Количество отрицательных чисел = ', (num1<0) + (num2<0) + (num3<0))
+print('Количество положительных чисел = ', (num1>0) + (num2>0) + (num3>0))
