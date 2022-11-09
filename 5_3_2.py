@@ -8,7 +8,7 @@ while True:
         print('Something wrong. Try again!')
 
 list1 = [str(i) for i in range(2, n, 2)]
-for i in range(0, len(list1), 6):
-    list1.insert(i+5, '\n')
+for i in range(5, len(list1), 6):
+    list1.insert(i, '\n')
 
 print(' '.join(list1))
