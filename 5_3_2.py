@@ -11,4 +11,8 @@ list1 = [str(i) for i in range(2, n, 2)]
 for i in range(5, len(list1), 6):
     list1.insert(i, '\n')
 
-print(' '.join(list1))
+text = ' '.join(list1)
+for j in range(len(text)):
+    text = text.replace('\n ', '\n')
+
+print(text)
