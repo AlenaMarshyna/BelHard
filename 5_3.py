@@ -7,11 +7,9 @@ while True:
     except ValueError:
         print('It is not a number. Try again')
 
-for i in range(2, n - n % 10, 10):
-    for j in range(5):
-        print(i, end=' ')
-        i += 2
-    print()
-
-for i in range(n - n % 10 + 2, n, 2):
-    print(i, end=' ')
+for i in range(2, n - n%10, 6):
+        for j in range(i, i+10, 2):
+            print(j, end=' ')
+        print()
+for k in range(j+2, n, 2):
+    print(k, end=' ')
