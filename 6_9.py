@@ -5,7 +5,7 @@
 def get_key(dictionery):
     for key, keys in dictionery.items():
       #  for k in keys.get():
-        if keys.get('email') == '' or keys.get('email') == None:
+        if not keys.get('email'):
             print(keys.get('name'))
 
 # проверка
