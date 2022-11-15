@@ -3,11 +3,19 @@
 # последовательность натуральных чисел, означающих рост каждого человека в строю. После
 # этого вводится число X – рост Пети. Все числа во входных данных натуральные и не  превышают 200
 
+# если будет одинаковый рост и Петя встанет впереди реят с его ростом
 def place_line(height:list, h: int) -> int:
     height.append(h)
     height.sort(reverse=True)
     print(*height)
     return height.index(h) + 1
 
+# если будет одинаковы рост и Петя встанет после всех с его ростом
+def place_line2(height:list, h: int) -> int:
+    height.append(h)
+    height.sort()
+    print(*height)
+    return len(height) - height.index(h)
 
-print(place_line([195, 190, 190, 182, 182, 180, 165, 160], 187))  #check
+print(place_line([195, 190, 190, 182, 182, 180, 165, 160], 182))  #check
+print(place_line2([195, 190, 190, 182, 182, 180, 165, 160], 182))  #check2
