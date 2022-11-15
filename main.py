@@ -66,7 +66,17 @@
 #     return lst
 #
 # print(list_olffset([1, 2, 3, 4, 5, 6, 7], 13))
+#
+# lst = [1, 2, True, 'rrr']
+# lst = list(filter(lambda x: isinstance(x, str), lst))
+# print(lst)
+#
+# a: int = int(input())
+# a += 1
+#
+# lst = [1, 2, True, 'rrr']
+# lst = list(filter(lambda x: isinstance(x, str), lst))
+# print(lst)
 
-lst = [1, 2, True, 'rrr']
-lst = list(filter(lambda x: isinstance(x, str), lst))
-print(lst)
+
+ 
