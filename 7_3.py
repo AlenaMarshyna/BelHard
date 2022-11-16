@@ -1,15 +1,9 @@
 # Написать функцию pow, которая принимает число А и число Б, необходимо с помощью
 # рекурсии возвести число А в степень Б
 
-while True:
-    try:
-        a, b = float(input('Enter A: ')), float(input('Enter B: '))
-        break
-    except ValueError:
-        print('Not number. Try again')
 
-def pow(a:float) -> float:
-    global b
+def pow(a:float, b:float) -> float:
+    
     if b == 1:
         return a
     else:
@@ -17,4 +11,4 @@ def pow(a:float) -> float:
         return a*pow(a)
 
 
-print(pow(a))
+print(pow(2, 4))  # проверка
