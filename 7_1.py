@@ -1,15 +1,15 @@
 # Написать функцию horse принимающая координаты (два числа в диапазоне от 0 до 8)
 # расположения коня на шахматной доске, вывести все позиции куда может перейти конь за 1  шаг
 
-while True:
-    x, y = int(input('Enter x from 1 to 8: ')), int(input('Enter y from 1 to 8: '))
-    try:
-        if 1 <= x <= 8 and 1 <= y <= 8:
-            break
-    except ValueError:
-        print('Not number. Try again')
-    else:
-        print('Going off the chessboard. Try again')
+#while True:
+    #x, y = int(input('Enter x from 1 to 8: ')), int(input('Enter y from 1 to 8: '))
+    #try:
+        #if 1 <= x <= 8 and 1 <= y <= 8:
+            #break
+    #except ValueError:
+        #print('Not number. Try again')
+    #else:
+        #print('Going off the chessboard. Try again')
 
 
 def horse(x: int, y: int) -> list:
@@ -22,4 +22,4 @@ def horse(x: int, y: int) -> list:
     return position
 
 
-print(horse(x, y))
+print(horse(4, 4))  # проверка
