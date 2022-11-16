@@ -2,14 +2,6 @@
 # сумму в копейках, необходимо рассчитать сколько минимальное количество монет
 # номиналом 1/5/10/25 необходимо чтобы составить данную сумму. Прим. 66 = 25 + 25 + 10 + 5 + 1 ответ 5 монет
 
-while True:
-    try:
-        sum = int(input('Enter sum: '))
-        break
-    except ValueError:
-        print('Not sum')
-
-
 def witcher(sum: int) -> int:
     count_1 = 0
     count_5 = 0
@@ -26,4 +18,4 @@ def witcher(sum: int) -> int:
     return count_25 + count_10 + count_5 + count_1
 
 
-print(witcher(sum))
+print(witcher(66))  # проверка
