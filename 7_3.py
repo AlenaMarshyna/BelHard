@@ -8,7 +8,7 @@ def pow(a:float, b:float) -> float:
         return a
     else:
         b -= 1
-        return a*pow(a)
+        return a*pow(a, b)
 
 
 print(pow(2, 4))  # проверка
