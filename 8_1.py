@@ -27,9 +27,11 @@ def studen_sort(students: list[Student]) -> list:
     students.append(student2)
 
     
-    for j in list(sorted(students, key=lambda x: x.first_name)):
-        print(j.students)
-    #print(sorted(students, key=lambda s: s.first_name))
+    # for j in list(sorted(students, key=lambda x: x.first_name)):
+    #     print(j.students)
+
+    result = sorted(students, key=lambda s: s.first_name)
+    print(result)
     
 
 
