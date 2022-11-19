@@ -13,11 +13,8 @@ class Student:
     def __str__(self) -> str:
         return f'{self.first_name}, {self.group}, {self.marks}' 
     
-    #def __lt__(self, other):
-         #return self.score < other.score
 
-
-def studen_sort(students: list[Student]) -> list:
+def studen_sort(students: list[Student]) -> list[{}]:
     
     student1 = Student('Andrey', 1, [9, 9, 10])
     student2 = Student('Vitya', 5, [7, 9, 8])
