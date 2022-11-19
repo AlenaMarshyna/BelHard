@@ -15,13 +15,15 @@ class Numbers:
         return sum(self.numbers) / len(self.numbers)
         
     def max_count(self) -> float:
-        c = dict(Counter(self.numbers))
-        max_value = max(c.values())
-        final_dict = {k: v for k, v in c.items() if v == max_value}
-        if count == 1:
-            return max_c[0]
+        my_dict = dict(Counter(self.numbers))
+        max_value = max(my_dict.values())
+        new_dict = {key1: num for key1, num in my_dict.items() if num == max_value}
+        #print(new_dict)
+
+        if len(new_dict) > 1:
+            return sum(new_dict) / len(new_dict)
         else:
-            return sum / count
+            return max_value[0]
 
 
 numbers1 = Numbers([1, 3, 4, 1, 3, 1, 4, 3])

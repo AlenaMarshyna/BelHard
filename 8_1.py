@@ -1,7 +1,7 @@
 # Конструктор класса принимает аргументы: first_name: str, group: int, marks: list[int]
-#Написать метод __str__ возвращающая форматированную строку с данными об студенте
-#Написать функцию (не метод) student_sort принимающая список студентов: students: 
-#list[Student] и возвращающая список студентов отсортированный по имени
+# Написать метод __str__ возвращающая форматированную строку с данными об студенте
+# Написать функцию (не метод) student_sort принимающая список студентов: students:
+# list[Student] и возвращающая список студентов отсортированный по имени
 
 class Student:
     
@@ -25,15 +25,11 @@ def studen_sort(students: list[Student]) -> list:
     students = list()
     students.append(student1)
     students.append(student2)
-    
-    #students =[
-    #Student('Andrey', 1, [9, 9, 10]),
-    #Student('Vitya', 5, [7, 9, 8])
-    #]
+
     
     for j in list(sorted(students, key=lambda x: x.first_name)):
         print(j.students)
     #print(sorted(students, key=lambda s: s.first_name))
     
-    
-#print(student_sort())
+
+
