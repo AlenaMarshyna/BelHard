@@ -12,23 +12,20 @@ class Student:
     
     def __str__(self) -> str:
         return f'{self.first_name}, {self.group}, {self.marks}' 
-    
 
-def studen_sort(students: list[Student]) -> list[{}]:
-    
-    student1 = Student('Andrey', 1, [9, 9, 10])
-    student2 = Student('Vitya', 5, [7, 9, 8])
-    
-    students = list()
-    students.append(student1)
-    students.append(student2)
 
-    
-    # for j in list(sorted(students, key=lambda x: x.first_name)):
-    #     print(j.students)
+student1 = Student('Andrey', 1, [9, 9, 10])
+student2 = Student('Vitya', 5, [7, 9, 8])
+students = [student1.first_name, student2.first_name]
+print(*students)
 
-    result = sorted(students, key=lambda s: s.first_name)
-    print(result)
+
+def studen_sort(students: list[Student]) -> list:
+    print(students.sort()
+
+
+    #result = sorted(students, key=lambda s: s.first_name)
+    #print(result)
     
 
 
