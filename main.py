@@ -78,7 +78,51 @@
 # lst = list(filter(lambda x: isinstance(x, str), lst))
 # print(lst)
 
+# file = open('10.txt', 'a', encoding='utf-8')
+# text = [int(line.strip()) for line in file if line.strip().isdigit()]
+#
+#
+#
+# number = [4, 5, 8]
+# text = '\n'.join(list(map(str, number)))
+# file.write(text + '\n')
+# file.close()
+
+# with open('10.txt', 'r') as file:
+#     lines = [line.strip() for line in file if line.strip()]
+#     file.seek(0)
+#     print(file.read())
+#     file.seek(10)
+#     print(file.read())
+
+# print(lines)
+
+import json
+
+with open('new.json', 'r') as file:
+    data = json.load(file)
+print(data)
+
+from pydantic import BaseModel, EmailStr, Field
 
 
+class User(BaseModel):
+    name: str
+    age: int=Field(ge=18, le=60)
+    email: EmailStr
 
- 
+data = {
+    'name': 'vas',
+    'age': 45,
+    'email': '333@mail.ru'
+
+}
+
+vasa = User(**data)
+
+from csv import DictReader, DictWriter
+
+with open('11.csv', 'r') as file:
+    rider = DictReader(file)
+    for us in rider:
+        print(us)
