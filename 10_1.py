@@ -5,6 +5,8 @@ is_baby_seat: bool (наличие десткого кресла)
 is_busy: bool (определяется внутри конструктора со значением False, не принимается на вход)
 1.1 Написать магический метод __str__ выводящий форматированную строку с информацией об автомобиле
 """
+from typing import Type
+
 
 class Car:
 
@@ -26,19 +28,19 @@ cars: list[Car] (список экземпляров класса Car)
 у автомобиля сменить атрибут is_busy на значение True, если подходящего автомобиля нет, метод должен возвращать None
 """
 
+
 class Taxi(Car):
 
     def __init__(self, color: str, count_passenger_seats: int, is_baby_seat: bool):
         super().__init__(color, count_passenger_seats, is_baby_seat)
         self.cars = list[Car]
 
-    def find_car(self, count_passengers: int, is_busy: bool) -> list | None:
+    def find_car(self, count_passengers: int, is_busy: bool) -> Type[list[Car]] | None:
 
-        if is_busy == False and count_passengers <= self.count_passenger_seats:
+        if is_busy is False and count_passengers <= self.count_passenger_seats:
             return self.cars
         else:
             return None
 
 
-
-print(Taxi('red', 5, False).find_car(4, False))  #проверка
+print(Taxi('red', 5, False).find_car(4, False))  # проверка

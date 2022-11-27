@@ -20,35 +20,35 @@ class Category:
     def add(self, txt: str) -> int:
         txt = str(input())
         if not txt in self.categories:
-            catevories.append(txt)
-            return categories.index(txt)
+            self.catevories.append(txt)
+            return self.categories.index(txt)
         else:
             raise ValueError
     
     def get(self, i: int) -> str:
         i = int(input())
-        if categories[i]:
-            return categories[i]
+        if self.categories[i]:
+            return self.categories[i]
         else:
             raise ValueError
     
     def delete(self, j: int) -> None:
        j = int(input())
-       if categories[j]:
-           del categories[j]
+       if self.categories[j]:
+           del self.categories[j]
    
     def update(self, k: int, name: str) -> None:
            k = int(input())
            name = input()
-           if not categories[k] and not name in categories:
-               categories.append(name)
-           elif name in categories:
+           if not self.categories[k] and not name in self.categories:
+               self.categories.append(name)
+           elif name in self.categories:
                raise ValueError
                
                
                
 n = Category(['A', 'B', 'C'])
-print(Category(['A', 'B', 'C']).add('C'))
+print(Category(['A', 'B', 'C']).add('D'))
 
 
 
