@@ -17,33 +17,36 @@ class Category:
     def __init__(self, categories: list) -> None:
         self.categories = categories
 
-    def add(self) -> int:
-        txt = str(input())
-        if txt in self.categories:
+    def add(self, txt: str) -> int:
+        self.txt = txt
+        if self.txt in self.categories:
             raise ValueError
         else:
             self.categories.append(txt)
             return self.categories.index(txt)
 
-    def get(self) -> str:
-        i = int(input())
-        if self.categories[i]:
-            return self.categories[i]
+    def get(self, i: int) -> str:
+        self.i = i
+        if self.categories[self.i]:
+            return self.categories[self.i]
         else:
             raise ValueError
 
-    def delete(self) -> None:
-        j = int(input())
-        if self.categories[j]:
-            del self.categories[j]
+    def delete(self, j) -> None:
+        self.j = j
+        if j <= len(self.categories):
+            del self.categories[self.j]
 
-    def update(self) -> None:
-        k = int(input())
-        name = input()
-        if not self.categories[k] and name not in self.categories:
-            self.categories.append(name)
-        elif name in self.categories:
+    def update(self, k: int, name: str) -> None:
+        self.k = k
+        self.name = name
+        if self.name not in self.categories and self.categories[self.k] != self.name:
+            return self.categories.append(self.name)
+        elif self.name in self.categories:
             raise ValueError
 
 
-print(Category(['A', 'B', 'C']).add())
+print(Category(['A', 'B', 'C']).add('D'))  # проверка
+print(Category(['A', 'B', 'C']).get(1))  # проверка
+print(Category(['A', 'B', 'C', 'E']).delete(5))  # проверка
+print(Category(['A', 'B', 'C', 'E']).update(3, 'B'))  # проверка
