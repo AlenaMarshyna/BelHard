@@ -15,15 +15,17 @@
 class Category:
 
     def __init__(self, categories: list) -> None:
+        self.name = None
+        self.i = None
         self.categories = categories
 
-    def add(self, txt: str) -> int:
-        self.txt = txt
-        if self.txt in self.categories:
+    def add(self, name: str) -> int:
+        self.name = name
+        if self.name in self.categories:
             raise ValueError
         else:
-            self.categories.append(txt)
-            return self.categories.index(txt)
+            self.categories.append(self.name)
+            return self.categories.index(self.name)
 
     def get(self, i: int) -> str:
         self.i = i
@@ -32,21 +34,53 @@ class Category:
         else:
             raise ValueError
 
-    def delete(self, j) -> None:
-        self.j = j
-        if j <= len(self.categories):
-            del self.categories[self.j]
+    def delete(self, i) -> None:
+        self.i = i
+        if self.i <= len(self.categories):
+            del self.categories[self.i]
 
-    def update(self, k: int, name: str) -> None:
-        self.k = k
+    def update(self, i: int, name: str) -> None:
+        self.i = i
         self.name = name
-        if self.name not in self.categories and self.categories[self.k] != self.name:
+        if self.name not in self.categories and self.categories[self.i] != self.name:
             return self.categories.append(self.name)
         elif self.name in self.categories:
             raise ValueError
 
 
 print(Category(['A', 'B', 'C']).add('D'))  # проверка
-print(Category(['A', 'B', 'C']).get(1))  # проверка
-print(Category(['A', 'B', 'C', 'E']).delete(5))  # проверка
-print(Category(['A', 'B', 'C', 'E']).update(3, 'B'))  # проверка
+
+
+# Изменить класс выше, список категорий должен содержать не просто имена категорий, а
+# словари с данными о каждой категории (name: str, is_published: bool)
+# 4.1 Добавить метод make_published принимающий индекс категории и меняющий значение
+# ключа is_published на True, если такого индекса нет, вызвать исключение ValueError
+# 4.2 Добавить метод make_unpublished принимающий индекс категории и меняющий
+# значение ключа is_published на False, если такого индекса нет, вызвать исключение  ValueError
+
+class NewCategory(Category):  # дочерний класс, где меняю атрибут на список словарей и добавляю новые методы
+
+    def __init__(self, categories: list[dict], name: str, is_published: bool) -> None:
+        super().__init__(categories)
+        self.name = name
+        self.is_published = is_published
+        self.categories = [{self.name: self.is_published}]
+        self.j = None
+
+    def make_published(self, j: int) -> None:
+        self.j = j
+        if not self.categories[self.j]:
+            raise ValueError
+        else:
+            self.categories[self.j][self.is_published] = True
+
+    def make_unpublished(self, j: int) -> None:
+        self.j = j
+        if not self.categories[self.j]:
+            raise ValueError
+        else:
+            self.categories[self.j][self.is_published] = False
+
+
+# проверка
+print(NewCategory([{'A': True}, {'B': False}]))
