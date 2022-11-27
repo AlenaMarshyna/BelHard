@@ -12,5 +12,43 @@
 # имена категорий уникальны, если новое имя категории нарушает уникальность в списке
 # категорий, вызвать исключение ValueError
 
+class Category:
+    
+    def __init__(self, categories: list) -> None:
+        self.categories = categories
+    
+    def add(self, txt: str) -> int:
+        txt = str(input())
+        if not txt in self.categories:
+            catevories.append(txt)
+            return categories.index(txt)
+        else:
+            raise ValueError
+    
+    def get(self, i: int) -> str:
+        i = int(input())
+        if categories[i]:
+            return categories[i]
+        else:
+            raise ValueError
+    
+    def delete(self, j: int) -> None:
+       j = int(input())
+       if categories[j]:
+           del categories[j]
+   
+    def update(self, k: int, name: str) -> None:
+           k = int(input())
+           name = input()
+           if not categories[k] and not name in categories:
+               categories.append(name)
+           elif name in categories:
+               raise ValueError
+               
+               
+               
+n = Category(['A', 'B', 'C'])
+print(Category(['A', 'B', 'C']).add('C'))
+
 
 
