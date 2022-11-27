@@ -13,42 +13,37 @@
 # категорий, вызвать исключение ValueError
 
 class Category:
-    
+
     def __init__(self, categories: list) -> None:
         self.categories = categories
-    
-    def add(self, txt: str) -> int:
+
+    def add(self) -> int:
         txt = str(input())
-        if not txt in self.categories:
-            self.catevories.append(txt)
-            return self.categories.index(txt)
-        else:
+        if txt in self.categories:
             raise ValueError
-    
-    def get(self, i: int) -> str:
+        else:
+            self.categories.append(txt)
+            return self.categories.index(txt)
+
+    def get(self) -> str:
         i = int(input())
         if self.categories[i]:
             return self.categories[i]
         else:
             raise ValueError
-    
-    def delete(self, j: int) -> None:
-       j = int(input())
-       if self.categories[j]:
-           del self.categories[j]
-   
-    def update(self, k: int, name: str) -> None:
-           k = int(input())
-           name = input()
-           if not self.categories[k] and not name in self.categories:
-               self.categories.append(name)
-           elif name in self.categories:
-               raise ValueError
-               
-               
-               
-n = Category(['A', 'B', 'C'])
-print(Category(['A', 'B', 'C']).add('D'))
+
+    def delete(self) -> None:
+        j = int(input())
+        if self.categories[j]:
+            del self.categories[j]
+
+    def update(self) -> None:
+        k = int(input())
+        name = input()
+        if not self.categories[k] and name not in self.categories:
+            self.categories.append(name)
+        elif name in self.categories:
+            raise ValueError
 
 
-
+print(Category(['A', 'B', 'C']).add())
