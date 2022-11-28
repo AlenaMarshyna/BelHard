@@ -13,42 +13,38 @@
 # категорий, вызвать исключение ValueError
 
 class Category:
-
-    def __init__(self, categories: list) -> None:
-        self.name = None
-        self.i = None
-        self.categories = categories
-
-    def add(self, name: str) -> int:
-        self.name = name
-        if self.name in self.categories:
+    
+    categories: list
+    
+    @classmethod
+    def add(cls, categories: list, name: str) -> int:
+        if name in categories:
             raise ValueError
         else:
-            self.categories.append(self.name)
-            return self.categories.index(self.name)
-
-    def get(self, i: int) -> str:
-        self.i = i
-        if self.categories[self.i]:
-            return self.categories[self.i]
+            categories.append(name)
+            return categories.index(name)
+    
+    @classmethod
+    def get(cls, categories: list, i: int) -> str:
+        if categories[i]:
+            return categories[i]
         else:
             raise ValueError
-
-    def delete(self, i) -> None:
-        self.i = i
-        if self.i <= len(self.categories):
-            del self.categories[self.i]
-
-    def update(self, i: int, name: str) -> None:
-        self.i = i
-        self.name = name
-        if self.name not in self.categories and self.categories[self.i] != self.name:
-            return self.categories.append(self.name)
-        elif self.name in self.categories:
+    
+    @classmethod
+    def delete(cls, categories: list, i: int) -> None:
+        if i <= len(categories):
+            del categories[i]
+    
+    @classmethod
+    def update(cls, categories:list,  i: int, name: str) -> None:
+        if name not in categories and categories[i] != name:
+            return categories.append(name)
+        elif name in categories:
             raise ValueError
 
 
-print(Category(['A', 'B', 'C']).add('D'))  # проверка
+print(Category().add(['A', 'B', 'C'], 'D'))  # проверка
 
 
 # Изменить класс выше, список категорий должен содержать не просто имена категорий, а
