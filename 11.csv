@@ -1,3 +1,4 @@
-1, name, age
-2, nnn, 12
-3, 1, m
+article, 1, 2, 3
+title, a, b, c
+description, aaa, bbb, ccc
+price, 10, 15, 20
