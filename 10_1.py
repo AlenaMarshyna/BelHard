@@ -29,18 +29,20 @@ cars: list[Car] (список экземпляров класса Car)
 """
 
 
-class Taxi(Car):
+class Taxi():
 
-    def __init__(self, color: str, count_passenger_seats: int, is_baby_seat: bool):
-        super().__init__(color, count_passenger_seats, is_baby_seat)
-        self.cars = list[Car]
+    def __init__(self, cars: list[Car]) -> None:
+        self.cars = cars
+        self.count_passengers = None
+        self.is_busy = None
 
-    def find_car(self, count_passengers: int, is_busy: bool) -> Type[list[Car]] | None:
-
-        if is_busy is False and count_passengers <= self.count_passenger_seats:
+    def find_car(self, count_passengers: int, is_busy: bool) -> list:
+        self.count_passengers = count_passengers
+        self.is_busy = is_busy
+        if self.is_busy == False and self.count_passengers <= int(self.cars[1]):
             return self.cars
         else:
             return None
 
 
-print(Taxi('red', 5, False).find_car(4, False))  # проверка
+print(Taxi(['red', 6, False]).find_car(7, False))  # проверка
