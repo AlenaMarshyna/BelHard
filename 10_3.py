@@ -3,7 +3,14 @@
 # б) разбить файл на несколько файлов по N строк
 
 
-with open('text.txt', 'r', encoding='utf-8') as file:
-    lines = file.readlines()
+with open('10.txt', 'r', encoding='utf-8') as file:
+    file = file.readlines()
     for i in range(int(input())):
-        file.write(lines[i])
+        text = open(f'txt 10 {i}', "w")
+        text.write(file[i])
+
+with open('10.txt', 'r', encoding='utf-8') as file:
+    file = file.readlines()
+    for i in range(len(file) // int(input())):
+        text = open(f'txt 10', "w")
+        text.write(file[i])
