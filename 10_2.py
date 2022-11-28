@@ -54,29 +54,29 @@ print(Category().add(['A', 'B', 'C'], 'D'))  # проверка
 # 4.2 Добавить метод make_unpublished принимающий индекс категории и меняющий
 # значение ключа is_published на False, если такого индекса нет, вызвать исключение  ValueError
 
-class NewCategory(Category):  # дочерний класс, где меняю атрибут на список словарей и добавляю новые методы
-
-    def __init__(self, categories: list[dict], name: str, is_published: bool) -> None:
-        super().__init__(categories)
-        self.name = name
-        self.is_published = is_published
-        self.categories = [{self.name: self.is_published}]
-        self.j = None
-
-    def make_published(self, j: int) -> None:
-        self.j = j
-        if not self.categories[self.j]:
-            raise ValueError
-        else:
-            self.categories[self.j][self.is_published] = True
-
-    def make_unpublished(self, j: int) -> None:
-        self.j = j
-        if not self.categories[self.j]:
-            raise ValueError
-        else:
-            self.categories[self.j][self.is_published] = False
-
-
-# проверка
-print(NewCategory([{'A': True}, {'B': False}]))
+# class NewCategory:
+#
+#     name: str
+#     is_published: bool
+#     categories = [
+#         {'name': name, 'is_published': is_published}
+#     ]
+#
+#     @classmethod
+#     def make_published(cls, j: int, categories: list[dict]) -> None:
+#
+#         if not categories[j]:
+#             raise ValueError
+#         else:
+#             categories[j]['is_published'] = True
+#
+#     @classmethod
+#     def make_unpublished(cls, j: int, categories: list[dict]) -> None:
+#         if not categories[j]:
+#             raise ValueError
+#         else:
+#             categories[j]['is_published'] = False
+#
+#
+# # проверка
+# print(NewCategory.make_unpublished(1, [{'name': 'A', 'is_published': True}, {'name': 'B', 'is_published': False}]))
