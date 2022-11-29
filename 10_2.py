@@ -55,53 +55,114 @@ print(Category().add(['A', 'B', 'C'], 'D'))  # проверка
 # 4.2 Добавить метод make_unpublished принимающий индекс категории и меняющий
 # значение ключа is_published на False, если такого индекса нет, вызвать исключение  ValueError
 
-class Category:
+# class Category(object):
+#
+#     categories: list[str] = []
+#
+#     @classmethod
+#     def add(cls, category: str) -> int:
+#         category = category.title()
+#         if category in cls.categories:
+#             raise ValueError('category is  not unique')
+#         cls.categories.append(category)
+#         return cls.categories.index(category)
+#         # return len(cls.categories) - 1
+#
+#     @classmethod
+#     def get(cls, pk: int) -> str:
+#         try:
+#             return cls.categories[pk]
+#         except IndexError as e:
+#             raise ValueError(e)
+#
+#     @classmethod
+#     def delete(cls, pk: int) -> None:
+#         try:
+#             del cls.categories[pk]
+#         except IndexError:
+#             ...  # pass
+#
+#     # @classmethod
+#     # def update(cls, pk: int, new_category_name: str):
+#     #     new_category_name = new_category_name.title()
+#     #     if new_category_name in cls.categories:
+#     #         raise ValueError('category is not unique')
+#     #     try:
+#     #         cls.get(pk=pk)
+#     #     except ValueError:
+#     #         cls.add(category=new_category_name)
+#     #     else:
+#     #         cls.categories[pk] = new_category_name
+#
+#     @classmethod
+#     def update(cls, pk: int, new_category_name: str) -> None:
+#         new_category_name = new_category_name.title()
+#         if new_category_name in cls.categories:
+#             raise ValueError('category is not unique')
+#         try:
+#             cls.categories[pk] = new_category_name
+#         except IndexError:
+#             cls.add(category=new_category_name)
+
+
+class Category(object):
 
     categories: list[dict] = []
 
     @classmethod
-    def add(cls, is_published: bool, name: str) -> int:
-        category = tuple(filter(lambda x: x['name'] == name, cls.categories))
+    def add(cls, category_name: str, is_published: bool) -> int:
+        category_name = category_name.title()
+        category = tuple(filter(lambda x: x['name'] == category_name, cls.categories))
         if category:
-            raise ValueError
+            raise ValueError('category is not unique')
         cls.categories.append(
             {
-                'name': name,
+                'name': category_name,
                 'is_published': is_published
             }
         )
         return len(cls.categories) - 1
 
     @classmethod
-    def get(cls, i: int) -> str:
+    def get(cls, pk: int) -> dict:
         try:
-            return cls.categories[i]
+            return cls.categories[pk]
         except IndexError as e:
             raise ValueError(e)
 
     @classmethod
-    def delete(cls, i: int) -> None:
+    def delete(cls, pk: int) -> None:
         try:
-            return cls.categories[i]
+            del cls.categories[pk]
         except IndexError:
-            ...
-
+            ...  # pass
 
     @classmethod
-    def make_published(cls, j: int) -> None:
+    def update(cls, new_category_name: str, pk: int) -> None:
+        new_category_name = new_category_name.title()
+        category = tuple(filter(lambda x: x['name'] == new_category_name, cls.categories))
+        if category:
+            raise ValueError('category is not unique')
         try:
-            cls.categories[j]['is_published'] = True
+            cls.categories[pk]['name'] = new_category_name
+        except IndexError:
+            cls.add(category_name=new_category_name, is_published=False)
+
+    @classmethod
+    def make_published(cls, pk: int) -> None:
+        try:
+            cls.categories[pk]['is_published'] = True
+        except IndexError as e:
+            raise ValueError(e)
+
+    @classmethod
+    def make_unpublished(cls, pk: int) -> None:
+        try:
+            cls.categories[pk]['is_published'] = False
         except IndexError as e:
             raise ValueError(e)
 
 
-    @classmethod
-    def make_unpublished(cls, j: int) -> None:
-        try:
-            cls.categories[j]['is_published'] = False
-        except IndexError as e:
-            raise ValueError(e)
-
-
-# проверка
-print(Category.make_unpublished([{'name': 'A', 'is_published': True}, {'name': 'B', 'is_published': False}], 1))
+print(Category.add('Food', True))
+print(Category.add('Drink', True))
+print(Category.add('food', False))
