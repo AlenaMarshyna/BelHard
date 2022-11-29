@@ -24,25 +24,25 @@ class Category:
         return cls.categories.index(name)
     
     @classmethod
-    def get(cls, categories: list, i: int) -> str:
+    def get(cls, i: int) -> str:
         try:
             return cls.categories[i]
         except IndexError as e:
             raise ValueError(e)
     
     @classmethod
-    def delete(cls, categories: list, i: int) -> None:
+    def delete(cls, i: int) -> None:
         try:
             return cls.categories[i]
         except IndexError:
             ...
     
-    @classmethod
-    def update(cls, categories:list,  i: int, name: str) -> None:
-        if name not in categories and categories[i] != name:
-            return categories.append(name)
-        elif name in categories:
-            raise ValueError
+    # @classmethod
+    # def update(cls, i: int, name: str) -> None:
+    #     if name not in cls.categories and cls.categories[i] != name:
+    #         return cls.categories.append(name)
+    #     elif name in cls.categories:
+    #         raise ValueError
 
 
 print(Category().add(['A', 'B', 'C'], 'D'))  # проверка
@@ -55,29 +55,53 @@ print(Category().add(['A', 'B', 'C'], 'D'))  # проверка
 # 4.2 Добавить метод make_unpublished принимающий индекс категории и меняющий
 # значение ключа is_published на False, если такого индекса нет, вызвать исключение  ValueError
 
-# class NewCategory:
-#
-#     name: str
-#     is_published: bool
-#     categories = [
-#         {'name': name, 'is_published': is_published}
-#     ]
-#
-#     @classmethod
-#     def make_published(cls, j: int, categories: list[dict]) -> None:
-#
-#         if not categories[j]:
-#             raise ValueError
-#         else:
-#             categories[j]['is_published'] = True
-#
-#     @classmethod
-#     def make_unpublished(cls, j: int, categories: list[dict]) -> None:
-#         if not categories[j]:
-#             raise ValueError
-#         else:
-#             categories[j]['is_published'] = False
-#
-#
-# # проверка
-# print(NewCategory.make_unpublished(1, [{'name': 'A', 'is_published': True}, {'name': 'B', 'is_published': False}]))
+class Category:
+
+    categories: list[dict] = []
+
+    @classmethod
+    def add(cls, is_published: bool, name: str) -> int:
+        category = tuple(filter(lambda x: x['name'] == name, cls.categories))
+        if category:
+            raise ValueError
+        cls.categories.append(
+            {
+                'name': name,
+                'is_published': is_published
+            }
+        )
+        return len(cls.categories) - 1
+
+    @classmethod
+    def get(cls, i: int) -> str:
+        try:
+            return cls.categories[i]
+        except IndexError as e:
+            raise ValueError(e)
+
+    @classmethod
+    def delete(cls, i: int) -> None:
+        try:
+            return cls.categories[i]
+        except IndexError:
+            ...
+
+
+    @classmethod
+    def make_published(cls, j: int) -> None:
+        try:
+            cls.categories[j]['is_published'] = True
+        except IndexError as e:
+            raise ValueError(e)
+
+
+    @classmethod
+    def make_unpublished(cls, j: int) -> None:
+        try:
+            cls.categories[j]['is_published'] = False
+        except IndexError as e:
+            raise ValueError(e)
+
+
+# проверка
+print(Category.make_unpublished([{'name': 'A', 'is_published': True}, {'name': 'B', 'is_published': False}], 1))
