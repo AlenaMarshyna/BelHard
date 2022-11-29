@@ -15,7 +15,7 @@ class Car(object):
         self.count_passenger_seats = count_passenger_seats
         self.is_baby_seat: bool = False
 
-    def __str__(self, is_busy=False) -> str:
+    def __str__(self, is_baby_seat=False) -> str:
         return f'Car: {self.color=}, {self.count_passenger_seats=}, {self.is_baby_seat=}'
 
 
@@ -36,15 +36,18 @@ class Taxi(object):
 
     def find_car(self, count_passengers: int, is_baby: bool) -> Car | None:
         for car in self.cars:
-            if not car.is_baby and car.count_passenger_seats >= count_passengers:
+            if not is_baby and car.count_passenger_seats >= count_passengers:
                 if is_baby and car.is_baby_seat:
-                    car.is_baby = True
+                    is_baby = True
                     return car
                 elif is_baby:
                     return None
                 else:
-                    car.is_baby = True
+                    is_baby = True
                     return car
 
-
-print(Taxi(['red', 6, False]).find_car(7, False))  # проверка
+car1 = Car('red', 6, False)
+car2 = Car('red', 5, True)
+cars1 = [car1, car2]
+taxi = Taxi(cars=cars1)
+print(taxi.find_car(2, False))  # проверка

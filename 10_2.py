@@ -14,27 +14,28 @@
 
 class Category:
     
-    categories: list
+    categories: list[str] = []
     
     @classmethod
     def add(cls, categories: list, name: str) -> int:
-        if name in categories:
+        if name in cls.categories:
             raise ValueError
-        else:
-            categories.append(name)
-            return categories.index(name)
+        cls.categories.append(name)
+        return cls.categories.index(name)
     
     @classmethod
     def get(cls, categories: list, i: int) -> str:
-        if categories[i]:
-            return categories[i]
-        else:
-            raise ValueError
+        try:
+            return cls.categories[i]
+        except IndexError as e:
+            raise ValueError(e)
     
     @classmethod
     def delete(cls, categories: list, i: int) -> None:
-        if i <= len(categories):
-            del categories[i]
+        try:
+            return cls.categories[i]
+        except IndexError:
+            ...
     
     @classmethod
     def update(cls, categories:list,  i: int, name: str) -> None:
