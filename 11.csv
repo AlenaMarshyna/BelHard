@@ -1,4 +1,3 @@
-article, 1, 2, 3
-title, a, b, c
-description, aaa, bbb, ccc
-price, 10, 15, 20
+article,description,title,price
+1, a, False, 15
+2, b, B, 10

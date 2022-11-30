@@ -97,32 +97,51 @@
 
 # print(lines)
 
-import json
+# import json
+#
+# with open('new.json', 'r') as file:
+#     data = json.load(file)
+# print(data)
+#
+# from pydantic import BaseModel, EmailStr, Field
+#
+#
+# class User(BaseModel):
+#     name: str
+#     age: int=Field(ge=18, le=60)
+#     email: EmailStr
+#
+# data = {
+#     'name': 'vas',
+#     'age': 45,
+#     'email': '333@mail.ru'
+#
+# }
+#
+# vasa = User(**data)
+#
+# from csv import DictReader, DictWriter
+#
+# with open('11.csv', 'r') as file:
+#     rider = DictReader(file)
+#     for us in rider:
+#         print(us)
 
-with open('new.json', 'r') as file:
-    data = json.load(file)
-print(data)
+from mypackage import *
 
-from pydantic import BaseModel, EmailStr, Field
+from pandas import DataFrame as df
 
+frame = df(
+    {
+        'name': ['aa', 'bb'],
+        'age': [14, 18]
+    }
+)
 
-class User(BaseModel):
-    name: str
-    age: int=Field(ge=18, le=60)
-    email: EmailStr
+try:
+    for line in frame.loc:
+        print(line['name'])
+except KeyError:
+    pass
 
-data = {
-    'name': 'vas',
-    'age': 45,
-    'email': '333@mail.ru'
-
-}
-
-vasa = User(**data)
-
-from csv import DictReader, DictWriter
-
-with open('11.csv', 'r') as file:
-    rider = DictReader(file)
-    for us in rider:
-        print(us)
+print(frame[frame['age'] > 14])
