@@ -127,21 +127,56 @@
 #     for us in rider:
 #         print(us)
 
-from mypackage import *
+# from mypackage import *
+#
+# from pandas import DataFrame as df
+#
+# frame = df(
+#     {
+#         'name': ['aa', 'bb'],
+#         'age': [14, 18]
+#     }
+# )
+#
+# try:
+#     for line in frame.loc:
+#         print(line['name'])
+# except KeyError:
+#     pass
+#
+# print(frame[frame['age'] > 14])
 
-from pandas import DataFrame as df
 
-frame = df(
-    {
-        'name': ['aa', 'bb'],
-        'age': [14, 18]
-    }
+from random import triangular
+
+print(triangular(low=1, high=10, mode=1))
+
+from datetime import datetime, timedelta
+
+data = datetime(
+    year=2022,
+    month=12,
+    day=2
 )
 
-try:
-    for line in frame.loc:
-        print(line['name'])
-except KeyError:
-    pass
+data2 = datetime.now()
+print(data)
+print(data2)
+print(data2 - data)
 
-print(frame[frame['age'] > 14])
+print(data.strftime('%d %B %y %H:%M'))
+data3 = '02 December 22 00:00'
+
+print(datetime.strptime(data3, '%d %B %y %H:%M'))
+delta = timedelta(days=5, hours=3)
+print(data + delta)
+
+from enum import Enum
+
+new*
+class Roles(int, Enum):
+    Admin = 1,
+    User = 3
+
+new*
+
