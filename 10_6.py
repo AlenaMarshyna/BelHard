@@ -9,7 +9,7 @@ from csv import DictReader, DictWriter
 
 with open('11.csv', 'r', encoding='utf-8') as file:
     rider = DictReader(file)
-    products = list()
+    products = []
     for user in rider:
         products.append(user)  # приведение к списку словарей
     for j in products:
@@ -19,17 +19,17 @@ with open('11.csv', 'r', encoding='utf-8') as file:
     class Config(BaseModel):
         article: str
         title: str
-        description: str
+        description: str= ''
         price: float
 
 
-    # products2 = [Config(**product) for product in products]
+    products2 = list(map(lambda x: Config(**x), products))
 
-    try:
-        products2 = [Config(**product) for product in products]
-    except ValidationError:
-        text = open("11+.csv", "w")
-        text.write(products)
+    # try:
+    #     products2 = [Config(**product) for product in products]
+    # except ValidationError:
+    #     text = open("11+.csv", "w")
+    #     text.write(products)
 
     print(products)
 
