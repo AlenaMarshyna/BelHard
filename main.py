@@ -145,38 +145,73 @@
 #     pass
 #
 # print(frame[frame['age'] > 14])
+#
+#
+# from random import triangular
+#
+# print(triangular(low=1, high=10, mode=1))
+#
+# from datetime import datetime, timedelta
+#
+# data = datetime(
+#     year=2022,
+#     month=12,
+#     day=2
+# )
+#
+# data2 = datetime.now()
+# print(data)
+# print(data2)
+# print(data2 - data)
+#
+# print(data.strftime('%d %B %y %H:%M'))
+# data3 = '02 December 22 00:00'
+#
+# print(datetime.strptime(data3, '%d %B %y %H:%M'))
+# delta = timedelta(days=5, hours=3)
+# print(data + delta)
+#
+# from enum import Enum
+#
+# new*
+# class Roles(int, Enum):
+#     Admin = 1,
+#     User = 3
+#
+# new*
 
-
-from random import triangular
-
-print(triangular(low=1, high=10, mode=1))
-
-from datetime import datetime, timedelta
-
-data = datetime(
-    year=2022,
-    month=12,
-    day=2
-)
-
-data2 = datetime.now()
-print(data)
-print(data2)
-print(data2 - data)
-
-print(data.strftime('%d %B %y %H:%M'))
-data3 = '02 December 22 00:00'
-
-print(datetime.strptime(data3, '%d %B %y %H:%M'))
-delta = timedelta(days=5, hours=3)
-print(data + delta)
-
-from enum import Enum
-
-new*
-class Roles(int, Enum):
-    Admin = 1,
-    User = 3
-
-new*
-
+# from pydantic import BaseModel
+#
+#
+# class Product(BaseModel):
+#     article: str
+#     title: str
+#     description: str = ''
+#     price: float
+#
+#
+# with open('products.csv', 'r', encoding='utf-8') as file:
+#     headers = file.readline().strip().split(',')
+#     products = []
+#     invalid_product = []
+#     for product in file:
+#         values = product.strip().split(',')
+#         product = dict(list(zip(headers, values)))
+#         if not product['article']:
+#             invalid_product.append(product)
+#             continue
+#         try:
+#             product['price'] = float(product['price'])
+#         except ValueError:
+#             invalid_product.append(product)
+#             continue
+#         products.append(product)
+# with open('invalid_product.csv', 'w', encoding='utf-8') as file:
+#     headers = ','.join(headers)
+#     for product in invalid_product:
+#         values = ','.join(list(product.values()))
+#         headers += f'\n{values}'
+#     file.write(headers)
+#
+# products = list(map(lambda x: Product(**x), products))
+# print(products)
