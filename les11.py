@@ -70,7 +70,7 @@ conn.commit()
 cur.executemany('''
     INSERT INTO users(name, email)
     VALUES(?, ?);
-''', (('Andr', 'and@gmail.com'), ('Andr', 'and@gmail.com'))
+''', (('Andr', 'and@gmail.com'), ('Andr', 'and@gmail.com')))
 conn.commit()
 
 cur.executemany('''
