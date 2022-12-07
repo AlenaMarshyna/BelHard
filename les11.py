@@ -6,7 +6,7 @@ cur = conn.cursor()
 cur.execute('''
     CREATE TABLE IF NOT EXISTS statuses(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name VARCHAR(10) UNIQUE
+        name VARCHAR(10)
     );
 ''')
 conn.commit()
@@ -59,5 +59,29 @@ cur.execute('''
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
     );
 ''')
+conn.commit()
+
+cur.execute('''
+    INSERT INTO statuses(name)
+    VALUES('buy');
+''')
+conn.commit()
+
+cur.execute('''
+    INSERT INTO users(name, email)
+    VALUES(?, ?);
+''', ('Andr', 'and@gmail.com'))
+conn.commit()
+
+cur.execute('''
+    INSERT INTO categories(name)
+    VALUES('prod1');
+''')
+conn.commit()
+
+cur.execute('''
+    INSERT INTO products(title, description)
+    VALUES(?, ?);
+''', ('AA', 'aa'))
 conn.commit()
 

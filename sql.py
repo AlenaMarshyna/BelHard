@@ -25,6 +25,14 @@ cur.execute('''
 ''')
 conn.commit()
 
-cur.execute('''
-    INSERT INTO 
-''')
+cur.executemany('''
+    INSERT INTO categories(name, is_published)
+    VALUES(?, ?);
+''', (('prod1', True), ('prod2', True)))
+conn.commit()
+
+# cur.executemany('''
+#     INSERT INTO products(name, price, category_id)
+#     VALUES(?, ?, ?);
+# ''', (('food1', 1000.20), ('food2', 2000.10)))
+# conn.commit()
