@@ -2,12 +2,14 @@ import sqlite3
 
 conn = sqlite3.connect('db.sqlite3')
 cur = conn.cursor()
-
+# рекурсивная ссылка
 cur.execute('''
     CREATE TABLE IF NOT EXISTS categories(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(24) NOT NULL UNIQUE,
-        is_published BOOLEAN DEFAULT(false)
+        is_published BOOLEAN DEFAULT(false),
+        reference_id INTEGER,
+        FOREIGN KEY (reference_id) REFERENCES categories(id) ON DELETE CASCADE
     );
 ''')
 conn.commit()
