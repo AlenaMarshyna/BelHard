@@ -61,27 +61,27 @@ cur.execute('''
 ''')
 conn.commit()
 
-cur.execute('''
+cur.executemany('''
     INSERT INTO statuses(name)
-    VALUES('buy');
-''')
+    VALUES(?);
+''', (('buy', ), ('sel', )))
 conn.commit()
 
-cur.execute('''
+cur.executemany('''
     INSERT INTO users(name, email)
     VALUES(?, ?);
-''', ('Andr', 'and@gmail.com'))
+''', (('Andr', 'and@gmail.com'), ('Andr', 'and@gmail.com'))
 conn.commit()
 
-cur.execute('''
+cur.executemany('''
     INSERT INTO categories(name)
-    VALUES('prod1');
-''')
+    VALUES(?);
+''', (('buy', ), ('sel', )))
 conn.commit()
 
-cur.execute('''
+cur.executemany('''
     INSERT INTO products(title, description)
     VALUES(?, ?);
-''', ('AA', 'aa'))
+''', (('AA', 'aa'), ('AA', 'aa')))
 conn.commit()
 
