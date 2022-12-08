@@ -59,17 +59,17 @@ Session = sessionmaker(bind=engine)
 
 from csv import DictReader
 
-# with open('category.csv', 'r', encoding='utf-8') as file:
-#     reader = DictReader(file)
-#
-#     with Session() as session:
-#         for category in reader:
-#             cat = Category(**category)
-#             session.add(cat)
-#             try:
-#                 session.commit()
-#             except IntegrityError:
-#                 session.rollback()
+with open('category.csv', 'r', encoding='utf-8') as file:
+    reader = DictReader(file)
+
+    with Session() as session:
+        for category in reader:
+            cat = Category(**category)
+            session.add(cat)
+            try:
+                session.commit()
+            except IntegrityError:
+                session.rollback()
 
 with open('products.csv', 'r', encoding='utf-8') as file:
     reader = DictReader(file)

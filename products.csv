@@ -1,4 +1,4 @@
-name
-Orange
-Mellon
-Apple
+name, price, is_published, category_id
+Orange, 100.00, True, 1
+Mellon,100.00, True, 2
+Apple,100.00, True, 3

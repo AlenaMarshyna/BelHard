@@ -15,7 +15,7 @@ cur.execute('''
     CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(24),
-        email VARCHAR(24) UNIQUE
+        email VARCHAR(24)
     );
 ''')
 conn.commit()
@@ -34,7 +34,7 @@ conn.commit()
 cur.execute('''
     CREATE TABLE IF NOT EXISTS categories(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name VARCHAR(24) UNIQUE
+        name VARCHAR(24)
     );
 ''')
 conn.commit()
@@ -61,7 +61,7 @@ cur.execute('''
 ''')
 conn.commit()
 
-cur.executemany('''
+cur.execute('''
     INSERT INTO statuses(name)
     VALUES(?);
 ''', (('buy', ), ('sel', )))
@@ -70,7 +70,13 @@ conn.commit()
 cur.executemany('''
     INSERT INTO users(name, email)
     VALUES(?, ?);
-''', (('Andr', 'and@gmail.com'), ('Andr', 'and@gmail.com')))
+''', (('Andr', 'and@gmail.com'), ('And', 'an@gmail.com')))
+conn.commit()
+
+cur.executemany('''
+    INSERT INTO orders(user_id, status_id)
+    VALUES(?, ?);
+''', ((1, 2), (2, 2)))
 conn.commit()
 
 cur.executemany('''
@@ -80,8 +86,13 @@ cur.executemany('''
 conn.commit()
 
 cur.executemany('''
-    INSERT INTO products(title, description)
-    VALUES(?, ?);
-''', (('AA', 'aa'), ('AA', 'aa')))
+    INSERT INTO products(title, description, category_id)
+    VALUES(?, ?, ?);
+''', (('AA', 'aa', 1), ('Ab', 'ab', 1)))
 conn.commit()
 
+cur.executemany('''
+    INSERT INTO order_items(order_id, product_id)
+    VALUES(?, ?);
+''', ((1, 1), (2, 1)))
+conn.commit()
