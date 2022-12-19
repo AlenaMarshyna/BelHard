@@ -275,4 +275,48 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+
+# класс Продукт(БазоваяМодель):
+# статья: ул.
+# название: ул.
+# описание: ул = ''
+# цена: плавающая
+#
+#
+# с файлом open('products.csv', 'r', encoding='utf-8'):
+# заголовки = file.readline().strip().split(',')
+# продуктов = []
+# неверный_продукт = []
+# для продукта в файле:
+# значения = product.strip().split(',')
+# product = dict(list(zip(заголовки, значения)))
+# если не продукт['статья']:
+#invalid_product.append(продукт)
+# Продолжить
+# пытаться:
+# продукт['цена'] = float(продукт['цена'])
+# кроме ValueError:
+#invalid_product.append(продукт)
+# Продолжить
+# products.append(продукт)
+# с файлом open('invalid_product.csv', 'w', encoding='utf-8'):
+# заголовки = ','.join(заголовки)
+# для продукта в invalid_product:
+# значения = ','.join(list(product.values()))
+# заголовки += f'\n{значения}'
+# file.write(заголовки)
+#
+# products = list(map(lambda x: Product(**x), products))
+# печать (продукты)
+# из моделей импортировать пользователя
+#
+#
+# def send_email(пользователь: Пользователь):
+# print(f'сообщение отправлено на {user.email}')
+#
+#
+# пользователи = User.all()
+# для пользователя в пользователях:
+# send_email(пользователь=пользователь)
     
